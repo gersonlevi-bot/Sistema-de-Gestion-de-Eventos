@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Pro - Gestión de Eventos</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Contenedor 1: Login -->
+    <main id="view-login" class="auth-container">
+      <article class="auth-card">
+        <h2>Iniciar Sesión</h2>
+        <p class="auth-subtitle">Ingresa sus datos para acceder</p>
+
+        <form id="form-login" novalidate>
+          <div class="form-group">
+            <label for="input-email">Correo electrónico</label>
+            <input
+              type="email"
+              id="input-email"
+              aria-required="true"
+              aria-describedby="email-help error-email"
+              required
+              placeholder="nombre@empresa.com"
+            />
+            <span
+              id="error-email"
+              class="input-error-msg hidden"
+              aria-live="polite"
+              >Correo inválido</span
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="input-password">Contraseña</label>
+            <input
+              type="password"
+              id="input-password"
+              aria-required="true"
+              required
+              aria-describedby="password-help error-password"
+              placeholder="********"
+            />
+            <span id="error-password" class="hidden" aria-live="polite"
+              >Contraseña inválida</span
+            >
+          </div>
+
+          <button id="btn-login" type="submit" class="btn btn-primary btn-block">
+            Ingresar
+          </button>
+        </form>
+      </article>
+    </main>
+
+    <!-- Contenedor 2: Vista principal (Dashboard)-->
+    <div id="view-dashboard" class="dashboard-layout hidden">
+      <!-- Barra lateral de navegación -->
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <h1>EventPro</h1>
+        </div>
+
+        <nav class="sidebar-nav">
+          <button id="nav-catalog" class="nav-link active">
+            Todos los Eventos
+          </button>
+          <button id="nav-registrations" class="nav-link">
+            Mis Inscripciones
+            <span id="badge-count" class="counter-badge">0</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <button id="btn-logout" class="btn-logout">Cerrar Sesión</button>
+        </div>
+      </aside>
+
+      <!-- Contenido principal dinámico -->
+      <main class="main-content">
+        <!-- Barra de filtros y control -->
+        <header class="content-header">
+          <div class="header-info">
+            <h2 id="dashboard-title">Próximos Eventos</h2>
+            <p id="dashboard-subtitle">
+              Explora y gestiona tus inscripciones a los eventos disponibles
+            </p>
+          </div>
+
+          <!-- Componentes de filtros (Visible en pestaña Catálogo) -->
+          <div id="filter-bar" class="filter-bar">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Buscar eventos por nombre..."
+            />
+
+            <select id="category-select">
+              <option value="">Todas las Categorías</option>
+              <option value="Tecnología">Tecnología</option>
+              <option value="Ciencia">Ciencia</option>
+              <option value="Negocios">Negocios</option>
+            </select>
+          </div>
+        </header>
+
+        <!-- Contenedor de Cards generadas por js -->
+        <section id="event-grid" class="event-grid"></section>
+      </main>
+    </div>
+
+    <!-- Componente emergente: Modal de confirmación de inscripción -->
+    <div
+      id="modal-container"
+      class="modal-overlay hidden"
+      role="dialog"
+      aria-modal="true"
+    >
+      <article class="modal-card">
+        <h3 id="modal-title">Confirmar Inscripción </h3>
+        <p id="modal-description">
+          ¿Estás seguro de que deseas registrarte en este evento?
+        </p>
+
+        <form id="form-confirm-inscription">
+          <div class="form-group">
+            <label for="select-ticket">Tipo de entrada</label>
+            <select id="select-ticket">
+              <option value="General">General (Asientos Estándar)</option>
+              <option value="VIP">VIP (Asientos Preferenciales)</option>
+            </select>
+          </div>
+
+          <div class="modal-actions">
+            <button
+              type="button"
+              id="btn-modal-cancel"
+              class="btn btn-secondary"
+            >
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              id="btn-modal-confirm"
+              class="btn btn-primary"
+            >
+              Confirmar Registro
+            </button>
+          </div>
+        </form>
+      </article>
+    </div>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
