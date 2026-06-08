@@ -6,10 +6,10 @@ export default class EventView {
         this.viewDashboard = document.getElementById('view-dashboard')
         // Dashboard: Contenido dinámico 
         this.eventGrid = document.getElementById('event-grid')
-        // this.dashboardTitle = document.getElementById('dashboard-title')
-        // this.dashboardSubtitle = document.getElementById('dashboard-subtitle')
-        // this.badgeCount = document.getElementById('badge-count')
-        // this.filterBar = document.getElementById('filter-bar')
+        this.dashboardTitle = document.getElementById('dashboard-title')
+        this.dashboardSubtitle = document.getElementById('dashboard-subtitle')
+        this.badgeCount = document.getElementById('badge-count')
+        this.filterBar = document.getElementById('filter-bar')
         // Modal emergente
         this.modalContainer = document.getElementById('modal-container')
         this.modalTitle = document.getElementById('modal-title')
@@ -29,7 +29,7 @@ export default class EventView {
 
         events.forEach(e => {
             const card = document.createElement('article')
-            card.className = 'card-event'
+            card.className = 'card-evento'
             card.innerHTML = `
                 <h3>${e.name}</h3>
                 <p>${e.date}</p>
@@ -50,7 +50,6 @@ export default class EventView {
             }
 
             card.appendChild(actionBtn)
-
             this.eventGrid.appendChild(card) 
         });
     }
@@ -60,7 +59,7 @@ export default class EventView {
         this.modalContainer.classList.remove('hidden')
 
         this.modalTitle.textContent = `Confirmar Inscripción a: ${event.name}`
-        this.modalDescription = `El evento inicia el dia ${event.date} en ${event.location}`  
+        this.modalDescription.textContent = `El evento inicia el dia ${event.date} en ${event.location}`  
     }
 
     // Ocultar modal emergente

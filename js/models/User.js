@@ -1,7 +1,7 @@
 // Clase Usuario
 export default class User {
     #email
-    #registeredEvent
+    #registeredEvents
 
     constructor(email) {
         this.#email = email
